@@ -1,0 +1,8 @@
+{
+    "name": "MySmartBlinds",
+    "domains": [
+        "cover"
+    ],
+    "iot_class": "cloud_poll",
+    "render_readme": true
+}

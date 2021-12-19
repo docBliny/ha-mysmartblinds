@@ -1,0 +1,9 @@
+{
+  "domain": "mysmartblinds",
+  "name": "MySmartBlinds Smart Bridge",
+  "documentation": "https://github.com/docBliny/ha-mysmartblinds",
+  "requirements": ["smartblinds-client==0.6"],
+  "dependencies": [],
+  "codeowners": ["@ianlevesque", "@docbliny"],
+  "version": "1.0.0"
+}
