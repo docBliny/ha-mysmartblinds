@@ -20,8 +20,8 @@ from homeassistant.const import (
     CONF_PASSWORD, CONF_USERNAME, ATTR_BATTERY_LEVEL)
 from homeassistant.components.cover import (
     ATTR_TILT_POSITION, CoverEntity,
-    PLATFORM_SCHEMA, SUPPORT_CLOSE_TILT,
-    SUPPORT_OPEN_TILT, SUPPORT_SET_TILT_POSITION)
+    PLATFORM_SCHEMA, SUPPORT_CLOSE, SUPPORT_CLOSE_TILT,
+    SUPPORT_OPEN, SUPPORT_OPEN_TILT, SUPPORT_SET_TILT_POSITION)
 from homeassistant.components.group.cover import CoverGroup
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.entity import generate_entity_id
@@ -253,7 +253,7 @@ class BridgedMySmartBlindCover(CoverEntity):
     @property
     def supported_features(self):
         """Flag supported features."""
-        return SUPPORT_OPEN_TILT | SUPPORT_CLOSE_TILT | SUPPORT_SET_TILT_POSITION
+        return SUPPORT_OPEN | SUPPORT_CLOSE | SUPPORT_OPEN_TILT | SUPPORT_CLOSE_TILT | SUPPORT_SET_TILT_POSITION
 
     @property
     def available(self):
@@ -304,6 +304,12 @@ class BridgedMySmartBlindCover(CoverEntity):
     def set_cover_tilt_position(self, **kwargs):
         """Move the cover tilt to a specific position."""
         self._tilt(kwargs[ATTR_TILT_POSITION])
+
+    def close_cover(self, **kwargs):
+        return self.close_cover_tilt()
+
+    def open_cover(self, **kwargs):
+        return self.open_cover_tilt()
 
     def update(self):
         state = self._bridge.get_blind_state(self._blind)
