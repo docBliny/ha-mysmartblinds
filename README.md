@@ -58,7 +58,7 @@ cover:
 ```
 
 
-## Troublshooting
+## Troubleshooting
 To turn on debug logging, modify your `configuration.yaml` and add the following:
 ```yaml
 logger:

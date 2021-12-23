@@ -198,7 +198,8 @@ class MySmartBlinds:
                 self._blind_states.update(new_blind_states)
             _LOGGER.debug("Blind states: %s", self._blind_states)
             for entity in self.entities:
-                entity.schedule_update_ha_state(force_refresh=True)
+                if entity._is_added:
+                    entity.schedule_update_ha_state(force_refresh=True)
         except HTTPError as http_error:
             if http_error.response.status_code == 401:
                 self._sbclient.login()
@@ -211,7 +212,8 @@ class MySmartBlinds:
         try:
             self.update_blind_states()
             for entity in self.entities:
-                entity.schedule_update_ha_state(force_refresh=True)
+                if entity._is_added:
+                    entity.schedule_update_ha_state(force_refresh=True)
         except Exception as ex:
             _LOGGER.error("Error updating periodic state %s", ex)
 
@@ -223,6 +225,7 @@ class BridgedMySmartBlindCover(CoverEntity):
 
     def __init__(self, config, bridge, blind, entity_id=None):
         """Init the device."""
+        self._is_added = False
         self._bridge = bridge
         self._blind = blind
         self._position = None
@@ -290,6 +293,16 @@ class BridgedMySmartBlindCover(CoverEntity):
             ATTR_RSSI_LEVEL: self._rssi,
         }
         return attr
+
+
+    async def async_added_to_hass(self):
+        """Run when entity about to be added to hass."""
+        await super().async_added_to_hass()
+        self._is_added = True
+
+    async def async_will_remove_from_hass(self):
+        await super().async_will_remove_from_hass()
+        self._is_added = True
 
     def close_cover_tilt(self, **kwargs):
         """Close the cover"""
