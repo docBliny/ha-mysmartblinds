@@ -2,8 +2,9 @@
   "domain": "mysmartblinds",
   "name": "MySmartBlinds Smart Bridge",
   "documentation": "https://github.com/docBliny/ha-mysmartblinds",
-  "requirements": ["smartblinds-client==0.6"],
+  "integration_type": "hub",
+  "requirements": ["PyJWT", "auth0-python~=3.24.1", "requests", "git+https://github.com/docBliny/smartblinds-client.git#smartblinds_client==0.7.0"],
   "dependencies": [],
   "codeowners": ["@ianlevesque", "@docbliny"],
-  "version": "1.0.2"
+  "version": "1.0.3"
 }
