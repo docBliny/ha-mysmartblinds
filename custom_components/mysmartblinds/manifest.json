@@ -3,8 +3,8 @@
   "name": "MySmartBlinds Smart Bridge",
   "documentation": "https://github.com/docBliny/ha-mysmartblinds",
   "integration_type": "hub",
-  "requirements": ["PyJWT", "auth0-python~=3.24.1", "requests", "git+https://github.com/docBliny/smartblinds-client.git#smartblinds_client==0.7.0"],
+  "requirements": ["PyJWT", "auth0-python~=3.24.1", "requests", "git+https://github.com/docBliny/smartblinds-client.git#smartblinds_client==0.7.1"],
   "dependencies": [],
   "codeowners": ["@ianlevesque", "@docbliny"],
-  "version": "1.0.3"
+  "version": "1.0.4"
 }

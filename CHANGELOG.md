@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4] - 2023-06-22
+
+### Changed
+- Update smartblinds-client to `v0.7.1`
+### Fixed
+- Library update fixes functionality
+
 ## [1.0.3] - 2023-01-27
 
 ### Fixed
