@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.5] - 2024-02-19
+### Fixed
+- SUPPORT_... deprecation warning on startup: https://github.com/docBliny/ha-mysmartblinds/issues/8 Thanks https://github.com/RedsGT !
+
 ## [1.0.4] - 2023-06-22
 
 ### Changed
