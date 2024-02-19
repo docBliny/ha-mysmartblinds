@@ -20,8 +20,7 @@ from homeassistant.const import (
     CONF_PASSWORD, CONF_USERNAME, ATTR_BATTERY_LEVEL)
 from homeassistant.components.cover import (
     ATTR_TILT_POSITION, CoverEntity,
-    PLATFORM_SCHEMA, SUPPORT_CLOSE, SUPPORT_CLOSE_TILT,
-    SUPPORT_OPEN, SUPPORT_OPEN_TILT, SUPPORT_SET_TILT_POSITION)
+    PLATFORM_SCHEMA, CoverEntityFeature)
 from homeassistant.components.group.cover import CoverGroup
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.entity import generate_entity_id
@@ -256,7 +255,7 @@ class BridgedMySmartBlindCover(CoverEntity):
     @property
     def supported_features(self):
         """Flag supported features."""
-        return SUPPORT_OPEN | SUPPORT_CLOSE | SUPPORT_OPEN_TILT | SUPPORT_CLOSE_TILT | SUPPORT_SET_TILT_POSITION
+        return CoverEntityFeature.OPEN | CoverEntityFeature.CLOSE | CoverEntityFeature.OPEN_TILT | CoverEntityFeature.CLOSE_TILT | CoverEntityFeature.SET_TILT_POSITION
 
     @property
     def available(self):
